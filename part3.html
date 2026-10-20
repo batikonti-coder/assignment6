@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 6 | Part 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Assignment 6</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Part 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="part2.html">Part 2</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="part3.html">Part 3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="part4.html">Part 4</a></li>
+                    <li class="nav-item"><a class="nav-link" href="part5.html">Part 5</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Task 5: List</h5>
+                    <ul id="my-list" class="list-group mb-3">
+                        <li class="list-group-item">Item 1</li>
+                    </ul>
+                    <button id="btn-append" class="btn btn-primary mb-2">Append Item</button>
+                    <button id="btn-prepend" class="btn btn-info mb-2">Prepend Item</button>
+                    <button id="btn-remove" class="btn btn-danger">Remove Last</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Task 6: Attributes</h5>
+                    <img id="attr-img" src="https://via.placeholder.com/100" class="mb-3 w-50">
+                    <a id="attr-link" href="https://google.com" target="_blank" class="mb-3 d-block">Google Link</a>
+                    <button id="btn-chg-img" class="btn btn-warning mb-2">Change Image Src</button>
+                    <button id="btn-chg-link" class="btn btn-warning">Change Link Href</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Task 7: Form Interaction</h5>
+                    <input type="text" id="input-name" class="form-control mb-2" placeholder="Name">
+                    <input type="email" id="input-email" class="form-control mb-3" placeholder="Email">
+                    <div class="bg-light p-2 border">
+                        <strong>Live Output:</strong><br>
+                        Name: <span id="out-name"></span><br>
+                        Email: <span id="out-email"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let count = 2;
+            $('#btn-append').click(function() {
+                $('#my-list').append('<li class="list-group-item">Appended ' + count++ + '</li>');
+            });
+            $('#btn-prepend').click(function() {
+                $('#my-list').prepend('<li class="list-group-item">Prepended ' + count++ + '</li>');
+            });
+            $('#btn-remove').click(function() {
+                $('#my-list li:last').remove();
+            });
+
+            $('#btn-chg-img').click(function() {
+                $('#attr-img').attr('src', 'https://via.placeholder.com/100/FF0000/FFFFFF');
+            });
+            $('#btn-chg-link').click(function() {
+                $('#attr-link').attr('href', 'https://github.com').text('GitHub Link');
+            });
+
+            $('#input-name, #input-email').on('keyup', function() {
+                $('#out-name').text($('#input-name').val());
+                $('#out-email').text($('#input-email').val());
+            });
+        });
+    </script>
+</body>
+</html>
